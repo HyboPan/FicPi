@@ -18,7 +18,7 @@ class Args:
                     self.c = self.args[1]
                     self.d = self.args[3]
                     self.o = self.args[5]
-         except Exception:
+        except Exception:
             print("Parameter Error")
             sys.exit(-1)
     c = '' #配置文件路径
@@ -79,7 +79,7 @@ class UserData:
 class IncomeTaxCalculator:
 
     # 计算每位员工的税后工资函数
-    def calc_for_all_userdata(wage):
+    def calc():
         for usd in userdata:
             wn = usd[0]
             wage = usd[1]
@@ -88,7 +88,7 @@ class IncomeTaxCalculator:
                 pay = 0
             elif JiShuL < wage <= 3500:
                 insurance = wage * pre
-               pay = 0
+                pay = 0
             elif JiShuH >= wage > 3500:
                 taxincome = wage - 3500 - wage * pre
                 if taxincome <= 1500:
@@ -126,7 +126,7 @@ class IncomeTaxCalculator:
 
     # 输出 CSV 文件函数
     def export(self, default='csv'):
-        result = self.calc_for_all_userdata()
+        result = self.calc()
         gongzi = Args()
         with open(gongzi.o, 'w') as f:
             writer = csv.writer(f)
@@ -134,7 +134,7 @@ class IncomeTaxCalculator:
 
 
 if __name__ == "__main__":
-    i = calc_for_all_userdata(wage)
+    i =IncomeTaxCalculator
     i.export()
    
     
