@@ -134,7 +134,7 @@ class IncomeTaxCalculator:
 
 
 if __name__ == "__main__":
-    i =IncomeTaxCalculator
+    i =IncomeTaxCalculator()
     i.export()
    
     
