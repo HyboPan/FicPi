@@ -6,7 +6,7 @@ import csv # 用于写入 csv 文件
 
 
 # 处理命令行参数类
-class Args(object):
+class Args:
     
     def __init__(self):
         self.args = sys.srgv[1:]
@@ -22,7 +22,7 @@ class Args(object):
             sys.exit(-1)
 
 # 配置文件类
-class Config(object):
+class Config:
 
     def __init__(self):
         self.config = self._read_config()
@@ -46,7 +46,7 @@ class Config(object):
         return config and pre and JiShuL and JiShuH
         
 # 用户数据类
-class UserData(object):
+class UserData:
 
     def __init__(self):
         self.userdata = self.read_users_data()
@@ -69,7 +69,7 @@ class UserData(object):
         return userdata
 
 # 税后工资计算类
-class IncomeTaxCalculator(object):
+class IncomeTaxCalculator:
 
     # 计算每位员工的税后工资函数
     def calc_for_all_userdata(wage):
