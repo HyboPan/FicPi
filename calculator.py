@@ -11,15 +11,20 @@ class Args:
     def __init__(self):
         self.args = sys.srgv[1:]
         
-        #补充参数读取函数，并返回相应的路径
-
-        #当参数格式出错时，抛出异常
+        #读取函数，并返回相应的路径
         try:
-            num = len(sys.argv)
-            num >= 1
-        except Exception:
+            for arg in self.args:
+                if '-c' and '-d' and '-o' in arg:
+                    self.c = self.args[1]
+                    self.d = self.args[3]
+                    self.o = self.args[5]
+         except Exception:
             print("Parameter Error")
             sys.exit(-1)
+    c = '' #配置文件路径
+    d = '' #用户文件路径
+    o = '' #工资导出路径
+
 
 # 配置文件类
 class Config:
@@ -44,7 +49,8 @@ class Config:
             sys.exit(-1)
 
         return config and pre and JiShuL and JiShuH
-        
+    
+    
 # 用户数据类
 class UserData:
 
@@ -68,6 +74,7 @@ class UserData:
         
         return userdata
 
+    
 # 税后工资计算类
 class IncomeTaxCalculator:
 
