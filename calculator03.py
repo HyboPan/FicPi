@@ -85,6 +85,7 @@ def calc():
     conf = Config()
     conf.config 
     l = []
+    nu = []
     JiShuL = float(conf.config['JiShuL'])
     JiShuH = float(conf.config['JiShuH'])
     pre = float(conf.config['s'])
@@ -129,9 +130,14 @@ def calc():
             ed = 13505
             pay = taxincome * tr -ed
         afwage = wage - pay - insurance
-        fin = (format(wn) + "," + format(wage) + "," + format(insurance, ".2f") + "," + format(pay, ".2f") + format(afwage, ".2f"))
-        l.append(fin)
-    return l
+ 
+        l.append(wn)
+        l.append(wage)
+        l.append("{:.2f}".format(insurance))
+        l.append("{:.2f}".format(pay))
+        l.append("{:.2f}".format(afwage))
+        nu.append(l)
+    return nu
 
 # 输出 CSV 文件函数
 def export():  
