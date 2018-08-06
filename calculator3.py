@@ -50,9 +50,7 @@ class Config:
             sys.exit(-1)
 
         return con
-
-configs = Config()
-print(configs.config)    
+    
     
 # 用户数据类
 class UserData:
@@ -76,15 +74,13 @@ class UserData:
             sys.exit(-1)
         
         return userdata
-ud = UserData()
-print(ud.userdata)
+
     
 # 税后工资计算
 def calc():
     udata = UserData()
     conf = Config()
     conf.config 
-    l = []
     nu = []
     JiShuL = float(conf.config['JiShuL'])
     JiShuH = float(conf.config['JiShuH'])
@@ -126,11 +122,31 @@ def calc():
         elif JiShuH < wage:
             insurance = JiShuH * pre
             taxincome = wage - 3500 - insurance
-            tr = 0.45
-            ed = 13505
+            if taxincome <= 1500:
+                tr = 0.03
+                ed = 0
+            elif 1500 < taxincome <= 4500:
+                tr = 0.10
+                ed = 105
+            elif 4500 < taxincome <= 9000:
+                tr = 0.20
+                ed = 555
+            elif 9000 < taxincome <= 35000:
+                tr = 0.25
+                ed = 1005
+            elif 35000 < taxincome <= 55000:
+                tr = 0.30
+                ed = 2755
+            elif 55000 < taxincome <= 80000:
+                tr = 0.35
+                ed = 5505
+            elif 80000 < taxincome:
+                tr = 0.45
+                ed = 13505
             pay = taxincome * tr -ed
         afwage = wage - pay - insurance
  
+        l = []
         l.append(wn)
         l.append(wage)
         l.append("{:.2f}".format(insurance))
